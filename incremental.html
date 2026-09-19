@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Interactive Website</title>
+    <style>
+        body {
+            background-color: lightblue;
+            font-family: Arial;
+            text-align: center;
+        }
+	h1 {
+	    color: darkblue;
+	    font-family: Arial;
+	    text-align: left;
+	}
+	p {
+	    color: darkblue;
+	    font-family:Arial;
+	    text-align: left
+	}
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Simple Incremental Game</h1>
+    <h2>Points: <span id="points">0</span></h2>
+    <button onclick="add()">Click Me!</button>
+    <button onclick="upgrade()">Costs <span id="cost">10</span></button>
+
+    <script>
+	let points = 0
+	let power = 1
+	let cost = 10
+	
+	function add() {
+	    points = points + power;
+	    updateScreen();
+	}
+	
+	function upgrade() {
+	    if (points >= 10) {
+	        points = points - cost;
+		power = power + 1;
+		cost = Math.ceil(Math.pow(cost, 1.2));
+		updateScreen();
+	    } else {
+		alert("Not enough points!") }
+	
+	function updateScreen() {
+	    document.getElementById("points").innerText = points;
+	    document.getElementById("cost").innerText = cost;
+	}
+    </script>
+</body>
+</html>

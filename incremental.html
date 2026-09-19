@@ -30,8 +30,10 @@
 <body>
     <h1>Simple Incremental Game</h1>
     <h2>Points: <span id="points">0</span></h2>
-    <button onclick="add()">Click Me!</button>
-    <button onclick="upgrade()">Costs <span id="cost">10</span></button>
+    <h6>Click Power: <span id="power">1</span></h6>
+    <h6>Upgrade Cost: <span id="cost">10</span></h6>
+    <button onclick="add()">Click Me</button>
+    <button onclick="upgrade()">Upgrade!</button>
 
     <script>
 	let points = 0
@@ -44,17 +46,20 @@
 	}
 	
 	function upgrade() {
-	    if (points >= 10) {
+	    if (points >= cost) {
 	        points = points - cost;
 		power = power + 1;
-		cost = Math.ceil(Math.pow(cost, 1.2));
+		cost = Math.ceil(Math.pow(cost, 1.1));
 		updateScreen();
 	    } else {
-		alert("Not enough points!") }
-	
+		alert("Not enough points!");
+	}
+	}
+
 	function updateScreen() {
 	    document.getElementById("points").innerText = points;
 	    document.getElementById("cost").innerText = cost;
+	    document.getElementById("power").innerText = power;
 	}
     </script>
 </body>
